@@ -1,55 +1,26 @@
-/* Copyright 2013 The Chromium Authors. All rights reserved.
- * Use of this source code is governed by a BSD-style license that can be
- * found in the LICENSE file. */
 @font-face {
   font-family: OldSchoolAdventures;
   src: url("Old School Adventures.ttf") format("opentype");
 }
-
+ * {
+  font-family: OldSchoolAdventures;
+}
 body {
   background-color: white;
-  font-family: OldSchoolAdventures;
   margin: 0;
   padding: 0;
-  width: 100%;
-}
-
-h2, .container2  {
-  text-align: center;
-}
-
-.container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
 }
 
 .container2 {
-  margin-bottom: 20px;
-  position: relative;
-  transition: .1s;
-  user-select: none;
-  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2vh;
 }
+
 .container2 code {
-  display: none;
-}
-
-.container2 input[type=number] {
-  border-radius: 8px;
-  font-family: OldSchoolAdventures;
-  width: 80px;
-  outline: none;
-}
-
-.container2:last-of-type {
-  border-radius: 7px;
-  border: 1px solid #BBB;
-  padding: 3px;
-}
-
-.container2:last-of-type:active {
-  transform: translateY(3px);
+  font-size: .8em;
 }
 
 .icon {
@@ -67,13 +38,11 @@ h2, .container2  {
   display: none;
 }
 
-/* Offline page */
-
 .offline .interstitial-wrapper {
   color: #2b2b2b;
   font-size: 1em;
   line-height: 1.55;
-  margin: 0 auto;
+  margin: 0 auto !important;
   max-width: 600px;
   padding-top: 100px;
   width: 100%;
@@ -106,6 +75,17 @@ h2, .container2  {
   top: 0;
   width: 100vw;
   z-index: 1;
+}
+
+#clouds {
+  background-color: #DDD;
+  cursor: pointer;
+  padding: .2em;
+  user-select: none;
+}
+
+#clouds:hover {
+  background-color: #EEE;
 }
 
 #offline-resources {
@@ -146,9 +126,9 @@ h2, .container2  {
   }
 }
 
-@media (min-width: 420px) and (max-width: 736px) and (min-height: 240px) and (max-height: 420px) and (orientation:landscape) {
-  .interstitial-wrapper {
-    margin-bottom: 100px;
+@media (min-height: 240px) and (orientation: landscape) {
+  .icon-offline {
+    margin-bottom: 20px;
   }
 }
 

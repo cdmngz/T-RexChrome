@@ -1,20 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Chrome T-Rex Runner</title>
-        <link rel="icon" href="../images/Alex-T-Fresh-Fruit-Pear.ico">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>Chrome t-rex-runner</title>
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
-    <script src="index.js"></script>
-    <!-- Thanks Wayou Liu for the T-RexRipCode https://github.com/wayou-->
 </head>
 
 <body id="t" class="offline">
     <div id="messageBox" class="sendmessage">
-         <h2>Press Space to start</h2>
-         <div class="niokbutton" onclick="okbuttonsend()"></div>
+        <h1 style="text-align: center;font-family: 'Open Sans', sans-serif;">Press Space to start</h1>
+        <div class="niokbutton" onclick="okbuttonsend()"></div>
     </div>
     <div id="main-frame-error" class="interstitial-wrapper">
         <div id="main-content">
@@ -52,48 +49,48 @@
             <code>Runner.instance_.horizon.addCloud()</code>
         </div>
     </div>
+
+    <script src="index.js"></script>    
+    <script>
+    
+        //input Velocidad
+        document.getElementsByTagName('input')[0].addEventListener('input', function () {
+            var valores = this.value;
+            Runner.instance_.setSpeed(valores/2);
+            this.nextElementSibling.innerHTML = "Runner.instance_.setSpeed("+valores+")";
+        });
+    
+        //input Saltar
+        document.getElementsByTagName('input')[1].addEventListener('input', function (evt) {
+            var valores = this.value;
+            Runner.instance_.tRex.setJumpVelocity(valores);
+            this.nextElementSibling.innerHTML = "Runner.instance_.tRex.setJumpVelocity("+valores+")";
+        });
+    
+        //Inmortal
+        var original = Runner.prototype.gameOver;
+        document.querySelector("input[type=checkbox]").addEventListener( 'change', function() {
+            if(this.checked) {
+                Runner.prototype.gameOver = function() {};
+            } else {
+                Runner.prototype.gameOver = original;
+            }
+        });
+    
+        //Crear nubes
+        document.getElementById('clouds').addEventListener('click', function() {
+            Runner.instance_.horizon.addCloud();
+        });   
+    </script> 
 </body>
 
 <script>
-
-    //Al presionar espacio
     document.onkeydown = function(evt) {
-        evt = evt || window.event;
-        if (evt.keyCode == 32) {
-            var box = document.getElementById("messageBox");
-            box.style.visibility="hidden";
-        }
-        if (evt.keyCode == 72) {
-            var codes = document.getElementsByTagName('code');
-            Object.entries(codes).forEach(([key, val]) => val.style.display = 'block');       
-        }
-    };
-
-    //input velocidad
-    document.getElementsByTagName('input')[0].addEventListener('input', function (evt) {
-        var valores = this.value/2;
-        Runner.instance_.setSpeed(valores);
-    });
-
-    //input saltar
-    document.getElementsByTagName('input')[1].addEventListener('input', function (evt) {
-        var valores = this.value;
-        Runner.instance_.tRex.setJumpVelocity(valores);
-    });
-
-    //inmortal
-    var original = Runner.prototype.gameOver;
-    document.querySelector("input[type=checkbox]").addEventListener( 'change', function() {
-        if(this.checked) {
-            Runner.prototype.gameOver = function() {};
-        } else {
-            Runner.prototype.gameOver = original;
-        }
-    });
-
-    //Crear Nubes
-    document.getElementById('clouds').addEventListener('click', function() {
-        Runner.instance_.horizon.addCloud();
-    });   
-</script>   
+    evt = evt || window.event;
+    if (evt.keyCode == 32) {
+        var box = document.getElementById("messageBox");
+        box.style.visibility="hidden";
+    }
+};
+</script>
 </html>
