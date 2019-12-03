@@ -10,13 +10,16 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.container {
+  z-index: 2;
+}
 .container2 {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-bottom: 2vh;
+  z-index: 3;
 }
 
 .container2 code {
@@ -46,6 +49,7 @@ body {
   max-width: 600px;
   padding-top: 100px;
   width: 100%;
+  z-index: -1;
 }
 
 .offline .runner-container {
