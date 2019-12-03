@@ -21,7 +21,9 @@ body {
   margin-bottom: 2vh;
   z-index: 3;
 }
-
+.container2 input {
+  z-index: 4;
+}
 .container2 code {
   font-size: .8em;
 }
