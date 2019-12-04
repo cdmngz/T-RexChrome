@@ -2,34 +2,27 @@
   font-family: OldSchoolAdventures;
   src: url("Old School Adventures.ttf") format("opentype");
 }
- * {
-  font-family: OldSchoolAdventures;
-}
 body {
   background-color: white;
   margin: 0;
   padding: 0;
 }
-.container {
-  z-index: 2;
+body > * {
+  font-family: OldSchoolAdventures !important;
 }
-.container2 {
+#containerHack {
+  position: relative;
+  z-index: 3;
+}
+#containerHack div {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 2vh;
-  z-index: 3;
-}
-.container2 input {
-  z-index: 4;
-}
-.container2 code {
-  font-size: .8em;
+  margin-bottom: 4vh;
 }
 
 .icon {
-  -webkit-user-select: none;
   user-select: none;
   display: inline-block;
 }
